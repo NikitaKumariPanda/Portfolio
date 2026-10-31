@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nikita Kumari Panda | Power BI Developer & Data Analyst</title>
+<meta name="description" content="Freelance Power BI developer and data analyst. I build interactive dashboards and turn messy data into clear business decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1128; --bg2:#101b3d; --card:#131f45; --line:#243461;
+  --text:#e8ecf8; --muted:#9aa7cc; --accent:#4cc9f0; --accent2:#7b6cff; --gold:#ffc857;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Instrument Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;font-size:17px;
+  background-image:radial-gradient(900px 500px at 85% -5%,rgba(123,108,255,.22),transparent 60%),radial-gradient(700px 500px at -10% 30%,rgba(76,201,240,.12),transparent 60%);
+  background-repeat:no-repeat}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.6rem);margin-bottom:12px}
+section{padding:88px 0}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:40px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(10,17,40,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.15rem}
+nav ul{display:flex;gap:26px;list-style:none;align-items:center;font-size:.95rem;color:var(--muted)}
+nav ul a:hover{color:var(--text)}
+.btn{display:inline-block;padding:13px 24px;border-radius:12px;font-weight:600;font-size:.98rem;transition:transform .2s,box-shadow .2s;border:1px solid transparent;cursor:pointer;font-family:var(--body)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06102a}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(76,201,240,.28)}
+.btn.ghost{border-color:var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+nav .btn{padding:9px 18px}
+
+/* hero */
+.hero{padding:84px 0 70px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6vw,4.2rem);font-weight:800;margin-bottom:20px}
+.title{color:var(--accent);font-weight:600;margin-bottom:14px}
+.hero p.sub{color:var(--muted);max-width:48ch;margin-bottom:30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* mini dashboard */
+.dash{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.dash-top{display:flex;gap:6px;margin-bottom:16px}
+.dash-top i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.kpi{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.kpi small{color:var(--muted);font-size:.72rem;display:block}
+.kpi b{font-family:var(--display);font-size:1.25rem}
+.bars{display:flex;align-items:flex-end;gap:9px;height:130px;padding:12px;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid var(--line)}
+.bars span{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(to top,var(--accent2),var(--accent));height:var(--h);transform-origin:bottom;animation:grow 1s cubic-bezier(.2,.8,.2,1) both}
+.bars span:nth-child(2){animation-delay:.08s}.bars span:nth-child(3){animation-delay:.16s}.bars span:nth-child(4){animation-delay:.24s}
+.bars span:nth-child(5){animation-delay:.32s}.bars span:nth-child(6){animation-delay:.4s}.bars span:nth-child(7){animation-delay:.48s}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* stats strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);padding:30px 0}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.strip b{display:block;font-family:var(--display);font-size:1.7rem}
+.strip span{color:var(--muted);font-size:.9rem}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about p{color:var(--muted);margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 15px;font-size:.92rem}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.project{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s}
+.project:hover{border-color:var(--accent)}
+.shot{aspect-ratio:16/9;background:linear-gradient(135deg,#182655,#0e1838);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.88rem;position:relative;border-bottom:1px solid var(--line)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pbody{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pbody h3{font-size:1.4rem}
+.problem{color:var(--muted);font-size:.97rem}
+.pbody ul{list-style:none;display:grid;gap:6px;font-size:.95rem}
+.pbody li{padding-left:18px;position:relative}
+.pbody li::before{content:"";position:absolute;left:0;top:.68em;width:8px;height:2px;background:var(--accent)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+.tools span{font-size:.8rem;color:var(--accent);background:rgba(76,201,240,.09);border-radius:6px;padding:3px 10px}
+.links{display:flex;gap:16px;font-weight:600;font-size:.95rem;padding-top:6px}
+.links a{color:var(--accent)}
+.links a:hover{text-decoration:underline}
+.more{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.more a{border:1px solid var(--line);border-radius:14px;padding:18px;background:rgba(255,255,255,.02);transition:border-color .2s}
+.more a:hover{border-color:var(--accent)}
+.more b{display:block;font-family:var(--display);margin-bottom:4px}
+.more span{color:var(--muted);font-size:.9rem}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.service h3{font-size:1.2rem;margin-bottom:8px}
+.service p{color:var(--muted);font-size:.96rem}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{border-top:2px solid var(--accent2);padding-top:16px;counter-increment:s}
+.step h3{font-size:1.1rem;margin-bottom:6px}
+.step h3::before{content:counter(s) ". "; color:var(--accent)}
+.step p{color:var(--muted);font-size:.94rem}
+
+/* contact */
+.contact-box{background:linear-gradient(135deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:24px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-box p{color:var(--muted);margin-bottom:22px}
+.contact-links{display:grid;gap:10px}
+.contact-links a{border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;font-size:.96rem}
+.contact-links a:hover{border-color:var(--accent)}
+.contact-links span{color:var(--muted)}
+form{display:grid;gap:12px}
+input,textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--text);font:inherit}
+input::placeholder,textarea::placeholder{color:#6f7da8}
+textarea{min-height:110px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media(max-width:860px){
+  .hero .wrap,.about,.contact-box{grid-template-columns:1fr}
+  .grid,.services,.more{grid-template-columns:1fr}
+  .steps,.strip .wrap{grid-template-columns:repeat(2,1fr)}
+  nav ul li:not(:last-child){display:none}
+  .contact-box{padding:28px}
+  section{padding:64px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.filters button{background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:9px 18px;font:inherit;font-size:.93rem;cursor:pointer;transition:all .2s}
+.filters button:hover{border-color:var(--accent);color:var(--text)}
+.filters button.on{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06102a;border-color:transparent;font-weight:600}
+.grid{grid-template-columns:repeat(3,1fr)!important;gap:22px!important}
+.project{transition:transform .25s,border-color .25s,box-shadow .25s}
+.project:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.4)}
+.project[hidden]{display:none}
+.ph{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line)}
+.ph.dash{background:linear-gradient(135deg,rgba(76,201,240,.28),rgba(123,108,255,.18))}
+.ph.ml{background:linear-gradient(135deg,rgba(123,108,255,.32),rgba(255,87,160,.16))}
+.ph.dl{background:linear-gradient(135deg,rgba(255,200,87,.26),rgba(255,87,87,.16))}
+.ph.eda{background:linear-gradient(135deg,rgba(60,220,170,.26),rgba(76,201,240,.16))}
+.ico{font-size:1.9rem}
+.type{font-size:.82rem;font-weight:600;background:rgba(10,17,40,.55);border:1px solid var(--line);border-radius:999px;padding:5px 13px}
+.pbody{padding:22px!important;gap:10px!important}
+.pbody h3{font-size:1.2rem!important}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:640px){.grid{grid-template-columns:1fr!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">Nikita Panda</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a class="btn primary" href="#contact">Hire me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="title">Power BI Developer | Data Analyst | BI Freelancer</p>
+      <h1>Turning data into decisions.</h1>
+      <p class="sub">I build interactive Power BI dashboards and clean up messy data so business owners can see what is working, what is not, and what to do next.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">Explore my projects</a>
+        <a class="btn ghost" href="#contact">Hire me</a>
+      </div>
+    </div>
+    <div class="dash" aria-hidden="true">
+      <div class="dash-top"><i></i><i></i><i></i></div>
+      <div class="kpis">
+        <div class="kpi"><small>Revenue</small><b>$248K</b></div>
+        <div class="kpi"><small>Leads</small><b>3,412</b></div>
+        <div class="kpi"><small>Cost per lead</small><b>$7.30</b></div>
+      </div>
+      <div class="bars">
+        <span style="--h:40%"></span><span style="--h:62%"></span><span style="--h:48%"></span><span style="--h:78%"></span><span style="--h:66%"></span><span style="--h:92%"></span><span style="--h:84%"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>Power BI</b><span>DAX and Power Query</span></div>
+    <div><b>SQL + Python</b><span>Cleaning and ETL</span></div>
+    <div><b>60% faster</b><span>Data access for a sales team</span></div>
+    <div><b>8+ months</b><span>Working as a data analyst intern</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2>Hi, I'm Nikita.</h2>
+      <p>I'm a Computer Science graduate and data analyst. During my internship at Cognora Technologies, I built Power BI dashboards, automated weekly reports, and fixed data validation rules that cut errors in a retail sales dataset by 40%.</p>
+      <p>Now I help small businesses, startups, and marketing teams replace messy spreadsheets with dashboards they can open, filter, and trust.</p>
+    </div>
+    <div>
+      <h3 style="margin-bottom:14px;font-size:1.2rem">Tools I use</h3>
+      <div class="chips">
+        <span>Power BI</span><span>DAX</span><span>Power Query</span><span>SQL Server</span><span>Python</span><span>Pandas</span><span>Excel</span><span>ETL</span><span>Data Modeling</span><span>Machine Learning</span><span>Git and GitHub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="background:rgba(255,255,255,.02)">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lead">14 projects across dashboards, machine learning, and data analysis. Filter by type to see the kind of work you need.</p>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="on" data-f="all">All</button><button data-f="dash">Power BI dashboards</button><button data-f="ml">Machine learning</button><button data-f="dl">Deep learning</button><button data-f="eda">Data analysis</button>
+    </div>
+    <div class="grid">
+<article class="project" data-cat="dash">
+<div class="ph dash"><span class="ico" aria-hidden="true">📊</span><span class="type">Business intelligence</span></div>
+<div class="pbody"><h3>Sales Intelligence Dashboard</h3><p class="problem">Interactive dashboard to monitor revenue, profit margin, and product performance, with KPI cards and slicers.</p>
+<div class="tools"><span>Power BI</span><span>DAX</span><span>Power Query</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/sales-dashboard">View on GitHub</a></div></div></article>
+<article class="project" data-cat="dash">
+<div class="ph dash"><span class="ico" aria-hidden="true">📊</span><span class="type">Marketing analytics</span></div>
+<div class="pbody"><h3>Marketing Campaign Performance Dashboard</h3><p class="problem">Tracks ad spend, total leads, cost per lead, click-through rate, and how each campaign performs.</p>
+<div class="tools"><span>Power BI</span><span>DAX</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/YOUR-CAMPAIGN-REPO">View on GitHub</a></div></div></article>
+<article class="project" data-cat="dash">
+<div class="ph dash"><span class="ico" aria-hidden="true">📊</span><span class="type">Churn analysis</span></div>
+<div class="pbody"><h3>Customer Churn Analysis Dashboard</h3><p class="problem">Shows which customers are leaving and which groups are most at risk, so you know where to act first.</p>
+<div class="tools"><span>Dashboard</span><span>Data analysis</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/Customer-Churn-Analysis-Dashboard">View on GitHub</a></div></div></article>
+<article class="project" data-cat="ml">
+<div class="ph ml"><span class="ico" aria-hidden="true">🤖</span><span class="type">Customer segmentation</span></div>
+<div class="pbody"><h3>Customer Segmentation Analysis</h3><p class="problem">Groups customers by behavior so marketing can target each group with the right offer.</p>
+<div class="tools"><span>Python</span><span>Pandas</span><span>ML</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/customer-segmentation-analysis">View on GitHub</a></div></div></article>
+<article class="project" data-cat="ml">
+<div class="ph ml"><span class="ico" aria-hidden="true">🤖</span><span class="type">Classification</span></div>
+<div class="pbody"><h3>Credit Card Fraud Detection</h3><p class="problem">Machine learning model that flags fraudulent card transactions.</p>
+<div class="tools"><span>Python</span><span>ML</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/credit-card-fraud-detection">View on GitHub</a></div></div></article>
+<article class="project" data-cat="ml">
+<div class="ph ml"><span class="ico" aria-hidden="true">🤖</span><span class="type">Regression</span></div>
+<div class="pbody"><h3>Uber Fare Price Prediction</h3><p class="problem">Predicts ride fares from trip details such as distance and time.</p>
+<div class="tools"><span>Python</span><span>Regression</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/uber-fare-price-prediction">View on GitHub</a></div></div></article>
+<article class="project" data-cat="ml">
+<div class="ph ml"><span class="ico" aria-hidden="true">🤖</span><span class="type">Regression</span></div>
+<div class="pbody"><h3>Car Price Regression</h3><p class="problem">Predicts car prices from vehicle features like age, mileage, and specs.</p>
+<div class="tools"><span>Python</span><span>Regression</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/car-price-regression-project">View on GitHub</a></div></div></article>
+<article class="project" data-cat="ml">
+<div class="ph ml"><span class="ico" aria-hidden="true">🤖</span><span class="type">Recommendation system</span></div>
+<div class="pbody"><h3>AI Agriculture Support System</h3><p class="problem">Recommends crops and fertilizer from soil, weather, and rainfall data, with a Flask web app for farmers.</p>
+<div class="tools"><span>Python</span><span>ML</span><span>Flask</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/krushishayog-Ai-basede-agriculture-support-system">View on GitHub</a></div></div></article>
+<article class="project" data-cat="dl">
+<div class="ph dl"><span class="ico" aria-hidden="true">🧠</span><span class="type">Deep learning</span></div>
+<div class="pbody"><h3>ANN Model</h3><p class="problem">Artificial neural network built and evaluated in Python.</p>
+<div class="tools"><span>Python</span><span>ANN</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/ANN-model">View on GitHub</a></div></div></article>
+<article class="project" data-cat="dl">
+<div class="ph dl"><span class="ico" aria-hidden="true">🧠</span><span class="type">Time series forecasting</span></div>
+<div class="pbody"><h3>Airline Passenger Forecasting</h3><p class="problem">RNN model that forecasts airline passenger numbers from past trends.</p>
+<div class="tools"><span>Python</span><span>RNN</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/airline-passenger-using-RNN-model">View on GitHub</a></div></div></article>
+<article class="project" data-cat="eda">
+<div class="ph eda"><span class="ico" aria-hidden="true">🔍</span><span class="type">Exploratory analysis</span></div>
+<div class="pbody"><h3>Supermarket Sales EDA</h3><p class="problem">Explores sales, product categories, and payment trends to find what drives revenue.</p>
+<div class="tools"><span>Python</span><span>Pandas</span><span>Seaborn</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/super-market-sell-EDA">View on GitHub</a></div></div></article>
+<article class="project" data-cat="eda">
+<div class="ph eda"><span class="ico" aria-hidden="true">🔍</span><span class="type">Health data analysis</span></div>
+<div class="pbody"><h3>Cardiac Risk Factors</h3><p class="problem">Explores which factors are linked to cardiac risk in patient data.</p>
+<div class="tools"><span>Python</span><span>EDA</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/cardiac-risk-facors">View on GitHub</a></div></div></article>
+<article class="project" data-cat="eda">
+<div class="ph eda"><span class="ico" aria-hidden="true">🔍</span><span class="type">Data analysis</span></div>
+<div class="pbody"><h3>Vehicle Condition Analysis</h3><p class="problem">Analyzes vehicle data to understand and assess vehicle condition.</p>
+<div class="tools"><span>Python</span><span>EDA</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/vehicle-condition">View on GitHub</a></div></div></article>
+<article class="project" data-cat="eda">
+<div class="ph eda"><span class="ico" aria-hidden="true">🔍</span><span class="type">Data quality and geospatial</span></div>
+<div class="pbody"><h3>Digital Mapping Data Validation</h3><p class="problem">Validates digital mapping data and checks geospatial quality to catch errors before they reach decisions.</p>
+<div class="tools"><span>Python</span><span>Data validation</span></div>
+<div class="links"><a href="https://github.com/NikitaKumariPanda/Digital-Mapping-Data-Validation-Geospatial-Quality-Analysis">View on GitHub</a></div></div></article>
+    </div>
+    <p style="margin-top:30px"><a class="btn ghost" href="https://github.com/NikitaKumariPanda">See everything on GitHub</a></p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <h2>How I can help</h2>
+    <p class="lead">Fixed-scope projects with clear deliverables, so you know what you get before we start.</p>
+    <div class="services">
+      <div class="service"><h3>Custom Power BI dashboards</h3><p>A dashboard built around your questions, with KPI cards, filters, and a layout your team can read at a glance.</p></div>
+      <div class="service"><h3>Excel to Power BI</h3><p>I move your spreadsheet reports into a live dashboard that refreshes without copy and paste.</p></div>
+      <div class="service"><h3>Data cleaning and ETL</h3><p>Messy, duplicated, or inconsistent data cleaned with Power Query, SQL, and Python.</p></div>
+      <div class="service"><h3>DAX and KPI setup</h3><p>Correct measures for revenue, margin, growth, conversion, and cost per lead.</p></div>
+      <div class="service"><h3>Marketing and sales reporting</h3><p>Campaign, lead, and sales reports that show where your money is working.</p></div>
+      <div class="service"><h3>Fix or improve a dashboard</h3><p>Already have a report that is slow, confusing, or wrong? I will repair and redesign it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process" style="background:rgba(255,255,255,.02)">
+  <div class="wrap">
+    <h2>How we work together</h2>
+    <p class="lead">A simple process with updates along the way.</p>
+    <div class="steps">
+      <div class="step"><h3>Brief</h3><p>You share your data and the questions you want answered.</p></div>
+      <div class="step"><h3>Plan</h3><p>I confirm scope, deliverables, timeline, and price.</p></div>
+      <div class="step"><h3>Build</h3><p>I clean the data and build the dashboard, sharing a draft for feedback.</p></div>
+      <div class="step"><h3>Deliver</h3><p>You get the final file, a short walkthrough, and revision support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Let's work together.</h2>
+        <p>Tell me what you want to track. I usually reply within a day.</p>
+        <div class="contact-links">
+          <a href="mailto:pandanikita68@gmail.com">Email <span>pandanikita68@gmail.com</span></a>
+          <a href="https://wa.me/917735424366">WhatsApp <span>+91 77354 24366</span></a>
+          <a href="https://www.linkedin.com/in/nikitapanda/">LinkedIn <span>nikitapanda</span></a>
+          <a href="https://github.com/NikitaKumariPanda">GitHub <span>NikitaKumariPanda</span></a>
+        </div>
+      </div>
+      <form action="mailto:pandanikita68@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required aria-label="Your name">
+        <input type="email" name="email" placeholder="Your email" required aria-label="Your email">
+        <textarea name="message" placeholder="What do you need help with?" required aria-label="Message"></textarea>
+        <button class="btn primary" type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>&copy; 2026 Nikita Kumari Panda</span><span>Power BI Developer, Odisha, India</span></div>
+</footer>
+
+<script>
+document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){
+document.querySelectorAll('.filters button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+var f=b.dataset.f;document.querySelectorAll('.project').forEach(function(p){p.hidden=!(f==='all'||p.dataset.cat===f)});});});
+</script>
+</body>
+</html>
